@@ -1,2 +1,4 @@
 import {getRandomIntInRange} from "./utils.js"
-console.log(getRandomIntInRange(1,5)) 
+const inpMin= 10000 ;
+const inpMax= 2002; 
+console.log(getRandomIntInRange(inpMin,inpMax)) 
