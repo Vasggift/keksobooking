@@ -10,3 +10,9 @@ export function getRandomIntInRange(min: number, max: number) {
   }
   return Math.floor((max - min) * Math.random() + min)
 }
+export function validateMessageLength(message:string,maxLength:number){
+  if (Number.isInteger(maxLength)===false){
+    throw new Error("You cant make incomplete words")
+  }
+  return message.length<maxLength;
+}
