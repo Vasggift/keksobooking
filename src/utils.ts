@@ -16,3 +16,20 @@ export function validateMessageLength(message:string,maxLength:number){
   }
   return message.length<maxLength;
 }
+export function getRandomFloatInRange(min:number,max:number,precision:number){
+  if(Number.isInteger(precision)===false){
+    throw new Error("where the float point going?")
+  }
+  if(Number.isFinite(min)===false){
+    throw new Error("Not a finite or existing number")
+  }
+  if(Number.isFinite(max)===false){
+    throw new Error("Not a finite or existing number")
+  }
+  const factor = 10**precision
+  const value = getRandomIntInRange(
+    Math.ceil (min*factor),
+    Math.floor (max*factor)
+  );
+  return value/factor
+}
