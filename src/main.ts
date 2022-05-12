@@ -1,4 +1,5 @@
 import {getRandomIntInRange,validateMessageLength,getRandomFloatInRange} from "./utils.js"
+import {disableForms} from "./forms.js"
 const inpMin= 2;
 const inpMax= 5 ; 
 console.log(getRandomIntInRange(inpMin,inpMax))
@@ -12,3 +13,4 @@ console.log(getRandomFloatInRange(139,140,5))
 console.log(getRandomFloatInRange(139,140,5))
 console.log(getRandomFloatInRange(139,140,5))
 console.log(getRandomFloatInRange(139,140,5))
+disableForms([...document.forms])
