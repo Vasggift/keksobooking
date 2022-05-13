@@ -1,21 +1,26 @@
 export function disableForms(forms: HTMLFormElement[]) {
-  forms.forEach(disableForm)
-}
-function disableForm(form: HTMLFormElement) {
-  disableElements([...form.elements]);
-  setClassName(form)
-}
-function setClassName(form: Element) {
-  form.classList.add(`${form.className}--disabled`)
-}
-function disableElements(elements: Element[]) {
-  elements.forEach(disableElement);
+  forms.forEach(createStateElement(true))
 }
 interface FormElement { disabled: boolean }
 function isFormElement(element: object): element is FormElement {
   return "disabled" in element
 }
-function disableElement(element: Element) {
-  if (isFormElement(element))
-    element.disabled = true
+
+function createStateElement(isDisabled: boolean) {
+  function changeDisabled(element: Element) {
+    if (isFormElement(element))
+      element.disabled = isDisabled
+  }
+  function changeElements(elements: Element[]) {
+    elements.forEach(changeDisabled)
+  }
+  function changeClassList(form: HTMLElement) {
+    const name = form.dataset["class"]
+    form.className = (` ${name} ${isDisabled ? (`${name}--disabled`) : ("")}`)
+  }
+  return function (form: HTMLFormElement) {
+    changeElements([...form.elements]);
+    changeClassList(form)
+  }
 }
+export const enableForm = createStateElement(false)
