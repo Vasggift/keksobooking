@@ -1,5 +1,6 @@
 import {getRandomIntInRange,validateMessageLength,getRandomFloatInRange} from "./utils.js"
 import {disableForms, enableForm} from "./forms.js"
+import {createAd} from"./mock.js"
 const inpMin= 2;
 const inpMax= 5 ; 
 console.log(getRandomIntInRange(inpMin,inpMax))
@@ -20,3 +21,4 @@ setTimeout(() => {
 setTimeout(() => {
     enableForm(document.forms[0])
 }, 3000);
+console.log(createAd())
